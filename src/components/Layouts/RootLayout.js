@@ -11,28 +11,19 @@ import { useSession, signOut } from "next-auth/react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
+import { categories } from "@/helper/categories";
 
 const { Header, Content, Footer } = Layout;
 
-// dropdown menu item
-// category names will come from database
-const items = [
-  {
-    label: <Link href="/products">1st menu item</Link>,
-    key: "0",
-  },
-  {
-    label: <Link href="/products">2nd menu item</Link>,
-    key: "1",
-  },
-  {
-    type: "divider",
-  },
-  {
-    label: "3rd menu item",
-    key: "3",
-  },
-];
+// dropdown menu items
+let items = [];
+categories?.forEach((categoryName) => {
+  items.push({
+    label: <Link href={`/products/${categoryName}`}>{categoryName}</Link>,
+    key: categoryName,
+  });
+});
+
 const RootLayout = ({ children }) => {
   const { data: session } = useSession();
 
@@ -82,7 +73,7 @@ const RootLayout = ({ children }) => {
               >
                 <a onClick={(e) => e.preventDefault()}>
                   <Space style={{ color: "white" }}>
-                    Click me
+                    Categories
                     <DownOutlined />
                   </Space>
                 </a>
@@ -96,13 +87,15 @@ const RootLayout = ({ children }) => {
               justifyContent: "space-between",
             }}
           >
-            <p style={{ padding: "0 10px" }}>item</p>
-            <p style={{ padding: "0 10px" }}>item</p>
-            <p style={{ padding: "0 10px" }}>item</p>
-            <p style={{ padding: "0 10px" }}>item</p>
-            <p style={{ padding: "0 10px" }}>item</p>
-            <p style={{ padding: "0 10px" }}>item</p>
-            <p style={{ padding: "0 10px" }}>item</p>
+            {categories.map((categoryName) => (
+              <Link
+                key={categoryName}
+                style={{ padding: "0 10px" }}
+                href={"products/" + categoryName}
+              >
+                {categoryName}
+              </Link>
+            ))}
           </div>
           {/* pc builder and authentication  */}
           <Menu theme="dark" mode="vertical" className={styles.menu_items}>

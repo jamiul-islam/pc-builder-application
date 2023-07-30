@@ -1,23 +1,18 @@
 import Head from "next/head";
 import RootLayout from "@/components/Layouts/RootLayout";
-import Slide from "@/components/UI/Slide";
 import Cards from "@/components/UI/Card";
 
-const HomePage = ({ products }) => {
-  // insert first 6 products into a variable
-  const homeData = products.slice(0, 6);
+const MonitorPage = ({ products }) => {
+  // filter products by ram
+  const homeData = products.filter((product) => product.category === "monitor");
   return (
     <>
       <Head>
-        <title>PC Builder App</title>
+        <title>Monitor</title>
         <meta name="description" content="..." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <div>
-        <Slide />
-      </div>
 
       <div
         style={{
@@ -28,7 +23,7 @@ const HomePage = ({ products }) => {
           marginTop: "2rem",
         }}
       >
-        <h1 style={{ margin: "2vh 0" }}>products</h1>
+        <h1 style={{ margin: "2vh 0" }}>Monitor</h1>
         <div
           style={{
             display: "grid",
@@ -38,16 +33,16 @@ const HomePage = ({ products }) => {
         >
           {/* <Cards /> */}
           {homeData.map((product) => (
-            <Cards key={product._id} product={product} />
+            <Cards key={product._id} product={product} category="monitor" />
           ))}
         </div>
       </div>
     </>
   );
 };
-export default HomePage;
+export default MonitorPage;
 
-HomePage.getLayout = function getLayout(page) {
+MonitorPage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 

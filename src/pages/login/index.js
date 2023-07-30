@@ -15,14 +15,14 @@ const LoginPage = () => {
           <GoogleOutlined
             onClick={() =>
               signIn("google", {
-                callbackUrl: process.env.NEXT_PUBLIC_WEBSITE_URL,
+                callbackUrl: `${process.env.NEXT_PUBLIC_WEBSITE_URL}`,
               })
             }
           />
           <GithubOutlined
             onClick={() =>
               signIn("github", {
-                callbackUrl: process.env.NEXT_PUBLIC_WEBSITE_URL,
+                callbackUrl: `${process.env.NEXT_PUBLIC_WEBSITE_URL}`,
               })
             }
           />

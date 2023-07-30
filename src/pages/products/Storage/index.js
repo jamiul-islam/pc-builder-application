@@ -1,23 +1,19 @@
 import Head from "next/head";
 import RootLayout from "@/components/Layouts/RootLayout";
-import Slide from "@/components/UI/Slide";
 import Cards from "@/components/UI/Card";
+import { categories } from "@/helper/categories";
 
-const HomePage = ({ products }) => {
-  // insert first 6 products into a variable
-  const homeData = products.slice(0, 6);
+const StoragePage = ({ products }) => {
+  // filter products by ram
+  const homeData = products.filter((product) => product.category === "storage");
   return (
     <>
       <Head>
-        <title>PC Builder App</title>
+        <title>storage</title>
         <meta name="description" content="..." />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <div>
-        <Slide />
-      </div>
 
       <div
         style={{
@@ -28,7 +24,7 @@ const HomePage = ({ products }) => {
           marginTop: "2rem",
         }}
       >
-        <h1 style={{ margin: "2vh 0" }}>products</h1>
+        <h1 style={{ margin: "2vh 0" }}>storage</h1>
         <div
           style={{
             display: "grid",
@@ -38,16 +34,20 @@ const HomePage = ({ products }) => {
         >
           {/* <Cards /> */}
           {homeData.map((product) => (
-            <Cards key={product._id} product={product} />
+            <Cards
+              key={product._id}
+              product={product}
+              category={categories[0].toLowerCase()}
+            />
           ))}
         </div>
       </div>
     </>
   );
 };
-export default HomePage;
+export default StoragePage;
 
-HomePage.getLayout = function getLayout(page) {
+StoragePage.getLayout = function getLayout(page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
