@@ -23,3 +23,10 @@ npm run dev
 ## TODO
 
 - category names will come from database
+
+## before deployment
+
+fix server error,
+
+- change env variable of firebase config
+- change callbackUrl from localhost to production url
