@@ -1,5 +1,6 @@
 import Head from "next/head";
 import RootLayout from "@/components/Layouts/RootLayout";
+import Slide from "@/components/UI/Slide";
 
 const HomePage = () => {
   return (
@@ -11,7 +12,9 @@ const HomePage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1>Homepage</h1>
+      <div>
+        <Slide />
+      </div>
     </>
   );
 };
