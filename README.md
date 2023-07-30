@@ -2,7 +2,7 @@
 
 ## Live Link
 
-live site: ...
+live site: <https://pc-builder-chi.vercel.app>
 
 ## Quick Start
 
@@ -19,3 +19,8 @@ cd assignment-pc-builder
 # run the app in development mode
 npm run dev
 ```
+
+## TODO
+
+- conditionally render login/logout button
+- category names will come from database

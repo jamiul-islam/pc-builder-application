@@ -4,46 +4,121 @@ import {
   LinkedinFilled,
   GoogleSquareFilled,
   TwitterSquareFilled,
+  DownOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu } from "antd";
-const { Header, Content, Footer } = Layout;
+import { Layout, Menu, Dropdown, Space } from "antd";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
+import Image from "next/image";
 
+const { Header, Content, Footer } = Layout;
+
+// dropdown menu item
+// category names will come from database
+const items = [
+  {
+    label: <Link href="/products">1st menu item</Link>,
+    key: "0",
+  },
+  {
+    label: <Link href="/products">2nd menu item</Link>,
+    key: "1",
+  },
+  {
+    type: "divider",
+  },
+  {
+    label: "3rd menu item",
+    key: "3",
+  },
+];
 const RootLayout = ({ children }) => {
   return (
     <Layout>
-      <Header
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-        }}
-      >
-        <div className="brand-logo">
-          <h1>
-            <Link
-              href="/"
-              style={{
-                color: "white",
-                backgroundColor: "#404040",
-                padding: "5px 10px",
-                borderRadius: "3px",
-              }}
-            >
-              PC Builder
+      {/* --------------navigation-------------- */}
+      <Header>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            color: "white",
+          }}
+        >
+          {/* logo */}
+          <div className="brand-logo" style={{ display: "flex" }}>
+            {/* logo */}
+            <h1>
+              <Link
+                href="/"
+                style={{
+                  color: "white",
+                  padding: "5px 10px",
+                  borderRadius: "3px",
+                }}
+              >
+                <Image
+                  src="https://www.startech.com.bd/image/catalog/logo.png"
+                  title="Star Tech Ltd "
+                  width="100"
+                  height="45"
+                  alt="Star Tech Ltd "
+                  style={{
+                    paddingTop: "10px",
+                  }}
+                />
+              </Link>
+            </h1>
+            {/* dropdown */}
+            <div style={{ margin: "0 10px" }}>
+              <Dropdown
+                menu={{
+                  items,
+                }}
+                trigger={["click"]}
+              >
+                <a onClick={(e) => e.preventDefault()}>
+                  <Space style={{ color: "white" }}>
+                    Click me
+                    <DownOutlined />
+                  </Space>
+                </a>
+              </Dropdown>
+            </div>
+          </div>
+          {/* featured categories */}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+          >
+            <p style={{ padding: "0 10px" }}>item</p>
+            <p style={{ padding: "0 10px" }}>item</p>
+            <p style={{ padding: "0 10px" }}>item</p>
+            <p style={{ padding: "0 10px" }}>item</p>
+            <p style={{ padding: "0 10px" }}>item</p>
+            <p style={{ padding: "0 10px" }}>item</p>
+            <p style={{ padding: "0 10px" }}>item</p>
+          </div>
+          {/* pc builder */}
+          <Menu theme="dark" mode="vertical" className={styles.menu_items}>
+            {/* TODO */}
+            {/* conditionally render button */}
+            <Link href="/account" style={{ margin: "0 30px" }}>
+              Login
             </Link>
-          </h1>
+            <Link href="/products">
+              <items>
+                <ProfileOutlined />
+                PC Builder
+              </items>
+            </Link>
+          </Menu>
         </div>
-        <Menu theme="dark" mode="vertical" className={styles.menu_items}>
-          <Link href="/products">
-            <items>
-              <ProfileOutlined />
-              Products
-            </items>
-          </Link>
-        </Menu>
       </Header>
 
+      {/* --------------body-------------- */}
       <Content
         style={{
           padding: "0 24px",
@@ -53,6 +128,7 @@ const RootLayout = ({ children }) => {
         {children}
       </Content>
 
+      {/* --------------footer-------------- */}
       <Footer
         style={{
           textAlign: "center",
