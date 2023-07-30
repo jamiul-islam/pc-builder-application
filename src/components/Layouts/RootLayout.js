@@ -6,7 +6,8 @@ import {
   TwitterSquareFilled,
   DownOutlined,
 } from "@ant-design/icons";
-import { Layout, Menu, Dropdown, Space } from "antd";
+import { Layout, Menu, Dropdown, Space, Button } from "antd";
+import { useSession, signOut } from "next-auth/react";
 import styles from "@/styles/Home.module.css";
 import Link from "next/link";
 import Image from "next/image";
@@ -33,6 +34,8 @@ const items = [
   },
 ];
 const RootLayout = ({ children }) => {
+  const { data: session } = useSession();
+
   return (
     <Layout>
       {/* --------------navigation-------------- */}
@@ -101,14 +104,34 @@ const RootLayout = ({ children }) => {
             <p style={{ padding: "0 10px" }}>item</p>
             <p style={{ padding: "0 10px" }}>item</p>
           </div>
-          {/* pc builder */}
+          {/* pc builder and authentication  */}
           <Menu theme="dark" mode="vertical" className={styles.menu_items}>
             {/* TODO */}
             {/* conditionally render button */}
-            <Link href="/account" style={{ margin: "0 30px" }}>
-              Login
-            </Link>
-            <Link href="/products">
+            {!session?.user?.email ? (
+              <Link
+                style={{
+                  textDecoration: "none",
+                  color: "white",
+                  margin: "0 30px",
+                }}
+                href="/login"
+              >
+                <items>Login</items>
+              </Link>
+            ) : (
+              <items>
+                <Button
+                  type="primary"
+                  danger
+                  onClick={() => signOut()}
+                  style={{ margin: "0 30px" }}
+                >
+                  Logout
+                </Button>
+              </items>
+            )}
+            <Link href="/pc-builder">
               <items>
                 <ProfileOutlined />
                 PC Builder

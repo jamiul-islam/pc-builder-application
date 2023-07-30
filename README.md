@@ -22,5 +22,4 @@ npm run dev
 
 ## TODO
 
-- conditionally render login/logout button
 - category names will come from database
