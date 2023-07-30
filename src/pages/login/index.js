@@ -15,14 +15,14 @@ const LoginPage = () => {
           <GoogleOutlined
             onClick={() =>
               signIn("google", {
-                callbackUrl: "https://pc-builder-chi.vercel.app",
+                callbackUrl: process.env.NEXT_PUBLIC_WEBSITE_URL,
               })
             }
           />
           <GithubOutlined
             onClick={() =>
               signIn("github", {
-                callbackUrl: "https://pc-builder-chi.vercel.app",
+                callbackUrl: process.env.NEXT_PUBLIC_WEBSITE_URL,
               })
             }
           />

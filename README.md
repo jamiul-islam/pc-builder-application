@@ -28,5 +28,6 @@ npm run dev
 
 fix server error,
 
-- change env variable of firebase config
+- change nextAuth redirect uri in google and github
+- change env variable of firebase config and nexAuth uri
 - change callbackUrl from localhost to production url
