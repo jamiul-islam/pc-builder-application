@@ -51,13 +51,13 @@ MotherBoardPage.getLayout = function getLayout(page) {
 export const getStaticProps = async () => {
   // TODO: comment out for production
 
-  if (typeof window === "undefined") {
-    return {
-      props: {
-        products: [],
-      },
-    };
-  }
+  // if (typeof window === "undefined") {
+  //   return {
+  //     props: {
+  //       products: [],
+  //     },
+  //   };
+  // }
 
   const res = await fetch(
     `${process.env.NEXT_PUBLIC_WEBSITE_URL}/api/products`
