@@ -19,7 +19,11 @@ const { Header, Content, Footer } = Layout;
 let items = [];
 categories?.forEach((categoryName) => {
   items.push({
-    label: <Link href={`/products/${categoryName}`}>{categoryName}</Link>,
+    label: (
+      <Link href={`/products/${categoryName}`}>
+        {categoryName.toUpperCase()}
+      </Link>
+    ),
     key: categoryName,
   });
 });
@@ -93,14 +97,12 @@ const RootLayout = ({ children }) => {
                 style={{ padding: "0 10px" }}
                 href={"products/" + categoryName}
               >
-                {categoryName}
+                {categoryName.toUpperCase()}
               </Link>
             ))}
           </div>
           {/* pc builder and authentication  */}
           <Menu theme="dark" mode="vertical" className={styles.menu_items}>
-            {/* TODO */}
-            {/* conditionally render button */}
             {!session?.user?.email ? (
               <Link
                 style={{

@@ -1,9 +1,9 @@
 export const categories = [
-  "Processor",
-  "Motherboard",
-  "RAM",
-  "Power-Supply",
-  "Storage",
-  "Monitor",
-  "Others",
+  "processor",
+  "motherboard",
+  "ram",
+  "power",
+  "storage",
+  "monitor",
+  "others",
 ];

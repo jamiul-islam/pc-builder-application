@@ -38,7 +38,11 @@ const HomePage = ({ products }) => {
         >
           {/* <Cards /> */}
           {homeData.map((product) => (
-            <Cards key={product._id} product={product} />
+            <Cards
+              key={product._id}
+              product={product}
+              category={product.category}
+            />
           ))}
         </div>
       </div>

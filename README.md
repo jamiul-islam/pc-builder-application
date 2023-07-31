@@ -19,15 +19,3 @@ cd assignment-pc-builder
 # run the app in development mode
 npm run dev
 ```
-
-## TODO
-
-- category names will come from database
-
-## before deployment
-
-fix server error,
-
-- change nextAuth redirect uri in google and github
-- change env variable of firebase config and nexAuth uri
-- change callbackUrl from localhost to production url
